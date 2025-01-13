@@ -1,3 +1,17 @@
 @use "tailwindcss/base";
 @use "tailwindcss/components";
 @use "tailwindcss/utilities";
+
+@font-face {
+    font-family: 'Rubik';
+    src: url(./assets/fonts/Rubik-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: 'Rubik-Italic';
+    src: url(./assets/fonts/Rubik-Italic-VariableFont_wght.ttf);
+}
+
+body {
+    background: #f4f6fa url(./assets/images/pattern-background-mobile-light.svg) no-repeat;
+}
