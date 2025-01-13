@@ -1,10 +1,11 @@
 import { NgClass, NgIf } from '@angular/common';
 import { Component, Input } from '@angular/core';
+import { CardBgDirective } from './card-bg.directive';
 
 @Component({
   selector: 'app-card',
   standalone: true,
-  imports: [NgIf, NgClass],
+  imports: [NgIf, NgClass, CardBgDirective],
   templateUrl: './card.component.html',
   styleUrl: './card.component.scss'
 })

@@ -2,25 +2,23 @@ import { Component, OnInit } from '@angular/core';
 import { CardComponent } from "../card/card.component";
 import { CommonModule } from '@angular/common';
 import { SubjectsService } from '../../services/subjects.service';
-import { catchError } from 'rxjs';
+import { Observable, of, take } from 'rxjs';
+import { QuizList } from '../../types/quiz-list.interface';
+import { RouterLink } from '@angular/router';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
   selector: 'app-pick-a-subject',
   standalone: true,
-  imports: [CardComponent, CommonModule],
+  imports: [CardComponent, CommonModule, RouterLink, HeaderComponent],
   templateUrl: './pick-a-subject.component.html',
   styleUrl: './pick-a-subject.component.scss'
 })
-export class PickASubjectComponent implements OnInit {
-
-  constructor(private readonly _subjectsService: SubjectsService) {}
-
-  quizzes: any = []
-  ngOnInit(): void {
-    this._subjectsService.getSubjectsList().subscribe((value) => {
-      console.log(value);
-      this.quizzes = value.quizzes.map((quiz: any) => quiz)
-    })
-  }
+export class PickASubjectComponent {
   
+  quizzes: Observable<QuizList> = of([]);
+
+  constructor(private readonly _subjectsService: SubjectsService) {
+    this.quizzes = this._subjectsService.getSubjectsList();
+  }
 }

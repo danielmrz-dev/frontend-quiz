@@ -1,14 +1,11 @@
-<button class="p-[12px] bg-white rounded-lg flex items-center gap-[16px] w-full cursor-pointer">
+<button class="p-[12px] rounded-lg flex items-center gap-[16px] w-full cursor-pointer"
+    [ngClass]="{ 'bg-white': cardIcon ? true : false }"
+>
     <img 
         *ngIf="cardIcon ? cardIcon : null" 
         [src]="cardIcon" alt="" 
         class="w-[40px] p-[5.71px] rounded-lg"
-        [ngClass]="{
-            'bg-orange-opaque': cardText === 'HTML',
-            'bg-green-opaque': cardText === 'CSS',
-            'bg-blue-opaque': cardText === 'JavaScript',
-            'bg-purple-opaque': cardText === 'Accessibility',
-        }"
+        [appCardBg]="cardText"
         >
     <span *ngIf="!cardIcon" class="text-[18px] font-rubik font-medium bg-light-grey w-[40px] p-[5.71px] rounded-lg text-center">A</span>
     <p class="text-[18px] font-rubik font-medium leading-[100%]"> {{ cardText }} </p>

@@ -1,4 +1,8 @@
+
+<app-header></app-header>
+
 <section class="py-[32px] px-[24px] flex flex-col gap-[40px]">
+
     <div class="flex flex-col gap-[16px]">
         <h1 class="font-rubik font-light text-[40px] flex flex-col leading-[100%] gap-[8px]">
             Welcome to the 
@@ -10,10 +14,9 @@
     </div>
 
     <div class="flex flex-col gap-[12px]">
-        <ng-container *ngFor="let quiz of quizzes">
-            <app-card [cardText]="quiz.title" [cardIcon]="quiz.icon" [bgColor]="quiz.title"></app-card>
+        <ng-container *ngFor="let quiz of (quizzes | async)">
+            <app-card [cardText]="quiz.title" [cardIcon]="quiz.icon" [routerLink]="['questions', quiz.title.toLowerCase()]"></app-card>
         </ng-container>
-        
     </div>
 
 </section>
