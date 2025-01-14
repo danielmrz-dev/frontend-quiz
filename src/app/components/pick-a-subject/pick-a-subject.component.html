@@ -1,5 +1,5 @@
 
-<app-header></app-header>
+<app-header bgColor="" headerIcon="" headerTitle=""></app-header>
 
 <section class="py-[32px] px-[24px] flex flex-col gap-[40px]">
 
@@ -15,7 +15,7 @@
 
     <div class="flex flex-col gap-[12px]">
         <ng-container *ngFor="let quiz of (quizzes | async)">
-            <app-card [cardText]="quiz.title" [cardIcon]="quiz.icon" [routerLink]="['questions', quiz.title.toLowerCase()]"></app-card>
+            <app-card [isCardOnHeader]="false" [cardText]="quiz.title" [cardIcon]="quiz.icon" [routerLink]="['questions', quiz.title.toLowerCase(), '1']"></app-card>
         </ng-container>
     </div>
 

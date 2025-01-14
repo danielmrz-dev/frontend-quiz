@@ -1,22 +1,28 @@
-<ng-container>
+
     <app-header
-        [headerTitle]="_subjectTitle"
-        [headerIcon]="subjectIcon"
-        [bgColor]="_subjectTitle"
+        [headerTitle]="headerTitle | titlecase"
+        [headerIcon]="headerIcon"
+        [showCard]="true"
+        
     ></app-header>
-</ng-container>
 <section class="py-[32px] px-[24px] flex flex-col gap-[40px]">
     <div>
-        <span class="font-rubikItalic text-[14px] text-grey-navy leading-[150%]">Question 6 of 10</span>
-        <h2 class="font-rubik text-[20px] font-medium leading-[120%] text-dark-navy pt-[12px] pb-[24px]">Which of these color contrast ratios defines the minimum WCAG 2.1 Level AA requirement for normal text?</h2>
+        <span class="font-rubikItalic text-[14px] text-grey-navy leading-[150%]">Question {{ currentQuestionId }} of {{ questions.length }} </span>
+        <h2 *ngIf="currentQuestion?.question" class="font-rubik text-[20px] font-medium leading-[120%] text-dark-navy pt-[12px] pb-[24px]"> {{ currentQuestion.question }} </h2>
         <div class="bg-white w-full h-[16px] rounded-full flex items-center">
             <div class="bg-purple h-[8px] rounded-full w-[152px] m-[4px]"></div>
         </div>
     </div>
     <div class="flex flex-col gap-[12px]">
-        <app-card cardText="teste" cardIcon="teste" bgColor="teste"></app-card>
-        <app-card cardText="teste" cardIcon="teste" bgColor="teste"></app-card>
-        <app-card cardText="teste" cardIcon="teste" bgColor="teste"></app-card>
-        <app-card cardText="teste" cardIcon="teste" bgColor="teste"></app-card>
+        <app-answer-option
+            *ngFor="let answer of currentQuestion?.options; let i = index"
+            [answerOption]="convertIndexToLetter(i)"
+            [answerText]="answer"
+            [answerId]="i"
+            [isSelected]="selectedAnswerId === i"
+            (onSelect)="onOptionSelected(i)"
+        ></app-answer-option>
+        <app-purple-button buttonText="Submit Answer" (click)="checkAnswer()"></app-purple-button>
+        <app-purple-button buttonText="Next Question" [routerLink]="['../', goToNextQuestion()]"></app-purple-button>
     </div>
 </section>

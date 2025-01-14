@@ -9,7 +9,7 @@ export const routes: Routes = [
         component: PickASubjectComponent
     },
     {
-        path: 'questions/:subject',
+        path: 'questions/:subject/:questionId',
         component: QuestionComponent,
     },
 ];

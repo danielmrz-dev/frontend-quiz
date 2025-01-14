@@ -8,14 +8,14 @@ export class CardBgDirective {
 
   @Input() appCardBg: string = ''
   @HostBinding('class') get classes(): string {
-    switch (this.appCardBg) {
-      case 'HTML':
+    switch (this.appCardBg.toLowerCase()) {
+      case 'html':
         return 'bg-orange-opaque';
-      case 'CSS':
+      case 'css':
         return 'bg-green-opaque';
-      case 'JavaScript':
+      case 'javascript':
         return 'bg-blue-opaque';
-      case 'Accessibility':
+      case 'accessibility':
         return 'bg-purple-opaque';
       default:
         return '';

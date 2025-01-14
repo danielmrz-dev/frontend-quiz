@@ -10,7 +10,7 @@ import { CardBgDirective } from './card-bg.directive';
   styleUrl: './card.component.scss'
 })
 export class CardComponent {
-  @Input() cardIcon: string = ''
-  @Input() bgColor: string = '' 
-  @Input({ required: true }) cardText: string = ''
+  @Input() cardIcon: string = '';
+  @Input() cardText: string = '';
+  @Input() isCardOnHeader: boolean = false;
 }

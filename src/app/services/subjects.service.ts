@@ -18,8 +18,7 @@ export class SubjectsService {
     getSubjectQuestionsAndAnswers(subject: string): Observable<IQuiz | undefined> {
         return this._http.get<QuizList>("data.json").pipe(
             map((quizList) => {
-                const quizFound = quizList.find((quiz) => quiz.title === subject);
-                return quizFound;
+                return quizList.find((quiz) => quiz.title.toLowerCase() === subject.toLowerCase());
             })
         )
     }

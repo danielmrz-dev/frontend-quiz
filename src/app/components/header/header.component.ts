@@ -16,9 +16,6 @@ export class HeaderComponent {
 
   @Input({ required: true }) headerTitle: string = '';
   @Input({ required: true }) headerIcon: string = '';
-  @Input({ required: true }) bgColor: string = '';
-  constructor(
-    private readonly _subjectsService: SubjectsService,
-  ) {}
+  @Input() showCard: boolean = false;
 
 }

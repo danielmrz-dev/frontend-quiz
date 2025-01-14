@@ -1,5 +1,5 @@
 <button class="p-[12px] rounded-lg flex items-center gap-[16px] w-full cursor-pointer"
-    [ngClass]="{ 'bg-white': cardIcon ? true : false }"
+    [ngClass]="{ 'bg-white': !isCardOnHeader }"
 >
     <img 
         *ngIf="cardIcon ? cardIcon : null" 
