@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { map, Observable } from "rxjs";
+import { catchError, map, Observable, of } from "rxjs";
 import { QuizList } from "../types/quiz-list.interface";
 import { IQuestion } from "../interfaces/question.interface";
 import { IQuiz } from "../interfaces/quiz.interface";
@@ -15,11 +15,11 @@ export class SubjectsService {
         return this._http.get<QuizList>("data.json");
     }
 
-    getSubjectTitle(subject: string): Observable<string | null> {
+    getSubjectQuestionsAndAnswers(subject: string): Observable<IQuiz | undefined> {
         return this._http.get<QuizList>("data.json").pipe(
             map((quizList) => {
                 const quizFound = quizList.find((quiz) => quiz.title === subject);
-                return quizFound ? quizFound.title : null;
+                return quizFound;
             })
         )
     }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { SwitchButtonComponent } from './components/switch-button/switch-button.component';
 import { CardComponent } from "../card/card.component";
 import { SubjectsService } from '../../services/subjects.service';
@@ -14,6 +14,9 @@ import { CommonModule } from '@angular/common';
 })
 export class HeaderComponent {
 
+  @Input({ required: true }) headerTitle: string = '';
+  @Input({ required: true }) headerIcon: string = '';
+  @Input({ required: true }) bgColor: string = '';
   constructor(
     private readonly _subjectsService: SubjectsService,
   ) {}
