@@ -47,6 +47,7 @@ export class AnswerFormComponent {
     } else {
       this.showError = false;
       this.checkAnswer();
+      this.answer.disable();
     }
   }
 

@@ -1,12 +1,22 @@
 <ng-container [formGroup]="formGroup">
     <label
         [for]="answerId"
-        [ngClass]="{ 'border-purple': answerId === selectedAnswerId, 'border-white': answerId !== selectedAnswerId }"
+        [ngClass]="{ 
+            'border-purple': answerId === selectedAnswerId, 
+            'border-white': answerId !== selectedAnswerId,
+            'border-tw-green': answerId === selectedAnswerId && answerIsCorrect === true,
+            'border-tw-red': answerId === selectedAnswerId && answerIsCorrect === false,
+        }"
         class="p-[10px] border-[3px]  bg-white rounded-lg flex items-center justify-start gap-[16px] w-full cursor-pointer relative focus:outline-none" tabindex="-1"
         >
     
         <span
-            [ngClass]="{ 'bg-purple': answerId === selectedAnswerId, 'text-white': answerId === selectedAnswerId }"
+            [ngClass]="{
+                'bg-purple': answerId === selectedAnswerId, 
+                'text-white': answerId === selectedAnswerId,
+                'bg-tw-green': answerId === selectedAnswerId && answerIsCorrect === true,
+                'bg-tw-red': answerId === selectedAnswerId && answerIsCorrect === false
+            }"
             class="text-[18px] font-rubik font-medium bg-light-grey min-w-[40px] p-[5.71px] rounded-lg text-center"
         > {{ answerOption }} </span>
     
