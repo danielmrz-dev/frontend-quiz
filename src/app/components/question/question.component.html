@@ -22,7 +22,13 @@
             [isSelected]="selectedAnswerId === i"
             (onSelect)="onOptionSelected(i)"
         ></app-answer-option>
-        <app-purple-button buttonText="Submit Answer" (click)="checkAnswer()"></app-purple-button>
-        <app-purple-button buttonText="Next Question" [routerLink]="['../', goToNextQuestion()]"></app-purple-button>
+        <app-purple-button
+            buttonText="Submit Answer"
+            (click)="checkAnswer()"
+        ></app-purple-button>
+        <app-purple-button
+            buttonText="Next Question"
+            [routerLink]="['../', goToNextQuestion()]"
+        ></app-purple-button>
     </div>
 </section>

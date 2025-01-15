@@ -23,7 +23,7 @@ export class QuestionComponent implements OnInit {
   currentQuestion: IQuestion = {} as IQuestion;
   currentQuestionId: string = '1';
   selectedAnswerId: number | null = null;
-  nextQuestion: number = 0;
+  correctAnswer: boolean = false;
 
   @Input() set subject(pickedSubject: string) {
     this.headerTitle = pickedSubject;
@@ -71,9 +71,20 @@ export class QuestionComponent implements OnInit {
 
   checkAnswer() {
     const correctAnwswer = this.currentQuestion.answer;
-    const selectedAnswer = this.currentQuestion.options[this.selectedAnswerId!];
+    let selectedAnswer: string | undefined = this.currentQuestion.options[this.selectedAnswerId!];
 
-    // Implementar a lógica para caso a resposta esteja correta;
+    if (!selectedAnswer) {
+      alert("Escolha uma opção!");
+      return;
+    }
+
+    if (correctAnwswer === selectedAnswer) {
+      alert("Resposta correta!");
+    } else {
+      alert("Resposta errada!");
+    }
+
+
 
   }
 
