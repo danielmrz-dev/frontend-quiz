@@ -22,6 +22,6 @@ export class AnswerOptionComponent {
   
   onBlur() {
     this.isSelected = false;
-    this.onSelect.emit(false);
+    this.onSelect.emit(this.isSelected);
   }
 }

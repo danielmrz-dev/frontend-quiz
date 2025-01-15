@@ -24,6 +24,7 @@ export class QuestionComponent implements OnInit {
   currentQuestionId: string = '1';
   selectedAnswerId: number | null = null;
   correctAnswer: boolean = false;
+  isQuestionAnswered: boolean = false;
 
   @Input() set subject(pickedSubject: string) {
     this.headerTitle = pickedSubject;
@@ -37,6 +38,11 @@ export class QuestionComponent implements OnInit {
 
   @Input() set questionId(questionId: string) {
     this.currentQuestionId = questionId;
+
+    // Implementar aqui as mudanças que acontecem quando a pergunta muda
+    alert("Questão nova");
+    this.isQuestionAnswered = false;
+    
   }
   
   constructor(
@@ -66,7 +72,7 @@ export class QuestionComponent implements OnInit {
     if (currentIdNumber < 10) {
       currentIdNumber++;
     }
-    return currentIdNumber.toString()
+    return currentIdNumber.toString();
   }
 
   checkAnswer() {
@@ -74,17 +80,18 @@ export class QuestionComponent implements OnInit {
     let selectedAnswer: string | undefined = this.currentQuestion.options[this.selectedAnswerId!];
 
     if (!selectedAnswer) {
-      alert("Escolha uma opção!");
+      this.isQuestionAnswered = false;
       return;
     }
 
     if (correctAnwswer === selectedAnswer) {
-      alert("Resposta correta!");
+      this.isQuestionAnswered = true;
+      // alert("Resposta correta!");
     } else {
-      alert("Resposta errada!");
+      this.isQuestionAnswered = true;
+      // alert("Resposta errada!");
     }
-
-
+    console.log(this.isQuestionAnswered);
 
   }
 

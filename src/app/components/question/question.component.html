@@ -22,13 +22,18 @@
             [isSelected]="selectedAnswerId === i"
             (onSelect)="onOptionSelected(i)"
         ></app-answer-option>
-        <app-purple-button
+        <app-purple-button *ngIf="!isQuestionAnswered"
             buttonText="Submit Answer"
             (click)="checkAnswer()"
         ></app-purple-button>
-        <app-purple-button
+        <app-purple-button *ngIf="isQuestionAnswered"
             buttonText="Next Question"
             [routerLink]="['../', goToNextQuestion()]"
         ></app-purple-button>
+        <p *ngIf="isQuestionAnswered"
+            class="flex items-center gap-2 text-tw-red text-[18px] font-rubik justify-center">
+            <img src="images/icon-error.svg" alt="" class="w-8 h-8">
+            Please select an answer
+        </p>
     </div>
 </section>
