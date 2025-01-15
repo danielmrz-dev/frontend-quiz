@@ -4,14 +4,15 @@ import { CardComponent } from "../card/card.component";
 import { SubjectsService } from '../../services/subjects.service';
 import { CommonModule } from '@angular/common';
 import { IQuestion } from '../../interfaces/question.interface';
-import { AnswerOptionComponent } from "./answer-option/answer-option.component";
+import { AnswerOptionComponent } from "./components/answer-option/answer-option.component";
 import { PurpleButtonComponent } from "../purple-button/purple-button.component";
 import { ActivatedRoute, RouterLink } from '@angular/router';
+import { AnswerFormComponent } from "./components/answer-form/answer-form.component";
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [HeaderComponent, CardComponent, CommonModule, AnswerOptionComponent, PurpleButtonComponent, RouterLink],
+  imports: [HeaderComponent, CardComponent, CommonModule, AnswerOptionComponent, PurpleButtonComponent, RouterLink, AnswerFormComponent],
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss'
 })
@@ -40,7 +41,7 @@ export class QuestionComponent implements OnInit {
     this.currentQuestionId = questionId;
 
     // Implementar aqui as mudanças que acontecem quando a pergunta muda
-    alert("Questão nova");
+    // alert("Questão nova");
     this.isQuestionAnswered = false;
     
   }
@@ -56,11 +57,6 @@ export class QuestionComponent implements OnInit {
       this.currentQuestionId = params['questionId'];
       this.currentQuestion = this.questions[+this.currentQuestionId];
     });
-  }
-  
-
-  convertIndexToLetter(index: number): string {
-    return String.fromCharCode(65 + index)
   }
 
   onOptionSelected(answerId: number) {

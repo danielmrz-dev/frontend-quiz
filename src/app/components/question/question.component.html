@@ -1,10 +1,10 @@
 
-    <app-header
-        [headerTitle]="headerTitle | titlecase"
-        [headerIcon]="headerIcon"
-        [showCard]="true"
-        
-    ></app-header>
+<app-header
+    [headerTitle]="headerTitle | titlecase"
+    [headerIcon]="headerIcon"
+    [showCard]="true"
+    
+></app-header>
 <section class="py-[32px] px-[24px] flex flex-col gap-[40px]">
     <div>
         <span class="font-rubikItalic text-[14px] text-grey-navy leading-[150%]">Question {{ currentQuestionId }} of {{ questions.length }} </span>
@@ -14,26 +14,6 @@
         </div>
     </div>
     <div class="flex flex-col gap-[12px]">
-        <app-answer-option
-            *ngFor="let answer of currentQuestion?.options; let i = index"
-            [answerOption]="convertIndexToLetter(i)"
-            [answerText]="answer"
-            [answerId]="i"
-            [isSelected]="selectedAnswerId === i"
-            (onSelect)="onOptionSelected(i)"
-        ></app-answer-option>
-        <app-purple-button *ngIf="!isQuestionAnswered"
-            buttonText="Submit Answer"
-            (click)="checkAnswer()"
-        ></app-purple-button>
-        <app-purple-button *ngIf="isQuestionAnswered"
-            buttonText="Next Question"
-            [routerLink]="['../', goToNextQuestion()]"
-        ></app-purple-button>
-        <p *ngIf="isQuestionAnswered"
-            class="flex items-center gap-2 text-tw-red text-[18px] font-rubik justify-center">
-            <img src="images/icon-error.svg" alt="" class="w-8 h-8">
-            Please select an answer
-        </p>
+        <app-answer-form [question]="currentQuestion"></app-answer-form>
     </div>
 </section>
