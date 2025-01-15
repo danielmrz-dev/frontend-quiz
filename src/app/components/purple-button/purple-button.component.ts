@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 })
 export class PurpleButtonComponent {
   @Input({ required: true }) buttonText: string = ''
+  @Input({ required: true }) type: string = ''
 }

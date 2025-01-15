@@ -31,9 +31,22 @@
         >
         <span class="text-[18px] font-rubik font-medium leading-[100%]">{{ answerText }}</span>
 
-        <ng-container *ngIf="answerId === selectedAnswerId">
-            <img *ngIf="answerIsCorrect === true" src="images/icon-correct.svg" alt="" class="ml-auto">
-            <img *ngIf="answerIsCorrect === false" src="images/icon-incorrect.svg" alt="" class="ml-auto">
+        <ng-container *ngIf="answerId === selectedAnswerId || answerId === correctAnswerId">
+            <img 
+                *ngIf="answerId === selectedAnswerId && answerIsCorrect === true" 
+                src="images/icon-correct.svg" 
+                alt="" 
+                class="ml-auto">
+            <img 
+                *ngIf="answerId === selectedAnswerId && answerIsCorrect === false" 
+                src="images/icon-incorrect.svg" 
+                alt="" 
+                class="ml-auto">
+            <img 
+                *ngIf="answerId === correctAnswerId && answerIsCorrect === false && answerId !== selectedAnswerId" 
+                src="images/icon-correct.svg" 
+                alt="" 
+                class="ml-auto">
         </ng-container>
         
     </label>

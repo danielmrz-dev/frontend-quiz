@@ -62,33 +62,4 @@ export class QuestionComponent implements OnInit {
   onOptionSelected(answerId: number) {
     this.selectedAnswerId = answerId;
   }
-
-  goToNextQuestion(): string {
-    let currentIdNumber = Number(this.currentQuestionId);
-    if (currentIdNumber < 10) {
-      currentIdNumber++;
-    }
-    return currentIdNumber.toString();
-  }
-
-  checkAnswer() {
-    const correctAnwswer = this.currentQuestion.answer;
-    let selectedAnswer: string | undefined = this.currentQuestion.options[this.selectedAnswerId!];
-
-    if (!selectedAnswer) {
-      this.isQuestionAnswered = false;
-      return;
-    }
-
-    if (correctAnwswer === selectedAnswer) {
-      this.isQuestionAnswered = true;
-      // alert("Resposta correta!");
-    } else {
-      this.isQuestionAnswered = true;
-      // alert("Resposta errada!");
-    }
-    console.log(this.isQuestionAnswered);
-
-  }
-
 }

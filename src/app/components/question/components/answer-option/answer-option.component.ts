@@ -16,12 +16,12 @@ export class AnswerOptionComponent {
   @Input({ required: true }) selectedAnswerId: number | null = null;
   @Input({ required: true }) formGroup!: FormGroup;
   @Input({ required: true }) answerIsCorrect: boolean | null = null;
+  @Input() correctAnswerId: number | null = null;
   @Output() onSelect = new EventEmitter<number | null>();
 
   onChange(id: number | null) {
     if (this.formGroup) {
       this.formGroup.get('answer')?.setValue(id);
-      // this.formGroup.get('answer')?.markAsTouched();
       this.onSelect.emit(id);
     }
   }

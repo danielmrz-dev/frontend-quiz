@@ -8,12 +8,17 @@
         [selectedAnswerId]="selectedAnswerId"
         (onSelect)="onSelect($event)"
         [answerIsCorrect]="answerIsCorrect"
+        [correctAnswerId]="correctAnswerId"
         >
     </app-answer-option>
     
-    <app-purple-button buttonText="Submit Answer"></app-purple-button>
+    <app-purple-button type="submit" *ngIf="answerIsCorrect === null" buttonText="Submit Answer"></app-purple-button>
     
-    <!-- <app-purple-button buttonText="Next Question"></app-purple-button> -->
+    <app-purple-button type="button"
+        *ngIf="answerIsCorrect !== null" 
+        buttonText="Next Question"
+        [routerLink]="['../', goToNextQuestion()]"
+    ></app-purple-button>
     
     <ng-container *ngIf="showError">
         <p class="flex items-center gap-2 text-tw-red text-[18px] font-rubik justify-center">
