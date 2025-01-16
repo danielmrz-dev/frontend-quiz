@@ -1,7 +1,7 @@
-import { Routes, withComponentInputBinding } from '@angular/router';
+import { Routes } from '@angular/router';
 import { PickASubjectComponent } from './components/pick-a-subject/pick-a-subject.component';
 import { QuestionComponent } from './components/question/question.component';
-import { HeaderComponent } from './components/header/header.component';
+import { QuizScoreComponent } from './components/quiz-score/quiz-score.component';
 
 export const routes: Routes = [
     {
@@ -9,7 +9,11 @@ export const routes: Routes = [
         component: PickASubjectComponent
     },
     {
-        path: 'questions/:subject/:questionId',
+        path: 'questions/:subject',
         component: QuestionComponent,
+    },
+    {
+        path: 'score',
+        component: QuizScoreComponent,
     },
 ];

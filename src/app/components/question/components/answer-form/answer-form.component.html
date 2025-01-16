@@ -17,7 +17,7 @@
     <app-purple-button type="button"
         *ngIf="answerIsCorrect !== null" 
         buttonText="Next Question"
-        [routerLink]="['../', goToNextQuestion()]"
+        (click)="goToNextQuestion()"
     ></app-purple-button>
     
     <ng-container *ngIf="showError">

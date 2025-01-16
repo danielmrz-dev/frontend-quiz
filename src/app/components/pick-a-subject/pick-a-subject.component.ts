@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { CardComponent } from "../card/card.component";
 import { CommonModule } from '@angular/common';
 import { SubjectsService } from '../../services/subjects.service';
-import { Observable, of, take } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { QuizList } from '../../types/quiz-list.interface';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from "../header/header.component";
